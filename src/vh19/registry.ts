@@ -13,7 +13,6 @@ import { loadSelfOverrides } from "./selfOverrides";
 import { BROADER_SPECIALISTS } from "./broaderBench";
 import { REACH_SPECIALISTS } from "./reachBench";
 import { MATURED_SPECIALISTS } from "./maturityBench";
-import { FINANCE_SPECIALISTS, FINANCE_IN_SPECIALISTS, FINANCE_INTL_SPECIALISTS } from "./financeBench";
 import { SILICON_SPECIALISTS } from "./siliconBench";
 import type { Specialist, SpecialistCategory, RiskTier } from "./types";
 
@@ -32,12 +31,6 @@ const seed = (
  * this array is 460 seed specialists followed by spreads of
  * BROADER_SPECIALISTS (160), REACH_SPECIALISTS (140),
  * MATURED_SPECIALISTS (390, from ./maturityBench),
- * FINANCE_SPECIALISTS (350 — 200 India-focused finance.in.* + 150
- * international finance.intl.*, from ./financeBench) and
- * SILICON_SPECIALISTS (350 — the full silicon lifecycle, from
- * ./siliconBench). Established total 1,850.
- * Counting seed() calls alone misses the spreads —
- * catalogStats().byProvenance is the check.
  */
 export const SPECIALISTS: Specialist[] = [
   /* ── code ───────────────────────────────────────────────────────────────── */
@@ -2044,7 +2037,6 @@ export const SPECIALISTS: Specialist[] = [
   ...REACH_SPECIALISTS,
   /* maturity tier — 390 matured specialists (individually specified; founding 240 + 19.5.3 horizon 150) */
   ...MATURED_SPECIALISTS,
-  ...FINANCE_SPECIALISTS,
   ...SILICON_SPECIALISTS,
 ];
 
@@ -2133,9 +2125,6 @@ export function catalogStats(): {
     broader: number;
     reach: number;
     matured: number;
-    finance: number;
-    financeIn: number;
-    financeIntl: number;
     silicon: number;
   };
 } {
@@ -2145,20 +2134,16 @@ export function catalogStats(): {
   const reach = REACH_SPECIALISTS.length;
   const matured = MATURED_SPECIALISTS.length;
   {
-    const finance = FINANCE_SPECIALISTS.length;
     const silicon = SILICON_SPECIALISTS.length;
     return {
       count: SPECIALISTS.length,
       categories: new Set(SPECIALISTS.map((s) => s.category)).size,
       byRisk,
       byProvenance: {
-        seed: SPECIALISTS.length - broader - reach - matured - finance - silicon,
+        seed: SPECIALISTS.length - broader - reach - matured - silicon,
         broader,
         reach,
         matured,
-        finance,
-        financeIn: FINANCE_IN_SPECIALISTS.length,
-        financeIntl: FINANCE_INTL_SPECIALISTS.length,
         silicon,
       },
     };

@@ -31,12 +31,11 @@ const ROUTED_SURFACE: string[] = [
   "src/App.tsx",
   "src/main.tsx",
   "src/vouch/pages/VouchPage.tsx",
-  // the routed pages are the doors of src/ui (Docs joined in 19.7.13, Munshi after it).
+  // the routed pages are the doors of src/ui
   "src/ui/Shell.tsx",
   "src/ui/store.ts",
   "src/ui/screens/Steward.tsx",
   "src/ui/screens/Work.tsx",
-  "src/ui/screens/Munshi.tsx",
   "src/ui/screens/Specialists.tsx",
   "src/ui/screens/Receipts.tsx",
   "src/ui/screens/Memory.tsx",

@@ -99,7 +99,7 @@ ok(`BUILD-INFO.txt's built: line names ${ENGINE_VERSION} (no stale build identit
   new RegExp(`^built:\\s*${ENGINE_VERSION.replace(/\./g, "\\.")}\\b`, "m").test(buildInfoIdentity),
   (buildInfoIdentity.split("\n").find((l) => l.startsWith("built:")) ?? "missing built: line").slice(0, 60));
 
-// 19.7.14 (Munshi) — the codename moved in version.ts but the build record still
+// the codegen codename moved in version.ts but the build record still
 // opened as the previous one: the bump tool names the release in `ENGINE_CODENAME` and
 // nowhere else. The record now has to agree, so the drift cannot recur quietly.
 ok(`BUILD-INFO.txt's identity line names the codename ${ENGINE_CODENAME} (a release renames the record)`,

@@ -33,7 +33,7 @@ function main(): void {
 
   const appTask = "build an app end to end: frontend, backend, database, security review and deployment";
   const poolApp = scanDomains(appTask);
-  const finTask = "file the GST return and reconcile the TDS ledger";
+  const finTask = "ship the release and reconcile the deploy ledger";
   const poolFin = scanDomains(finTask);
 
   /* 1 — the domain scan is dynamic */

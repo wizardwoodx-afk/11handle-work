@@ -38,20 +38,20 @@ const genSrc = fs.readFileSync(path.join(ROOT, "src/vh19/generalist.ts"), "utf8"
 
 function main(): void {
   /* the gate */
-  const point = moeGate("what is GSTR-3B used for");
+  const point = moeGate("what is a rate limit used for");
   ok("point request gates to k=1", point.tier === "point" && point.k === 1);
 
-  const standard = moeGate("reconcile our GST returns with the purchase register");
+  const standard = moeGate("reconcile our invoices with the purchase register");
   ok("standard request gates to k=2", standard.tier === "standard" && standard.k === 2);
 
-  const complex = moeGate("plan the full GST filing and also fix the TDS reconciliation and then review the tapeout STA signoff");
+  const complex = moeGate("plan the full release and also fix the deploy reconciliation and then review the tapeout STA signoff");
   ok("compound request across domains gates to k=3", complex.tier === "complex" && complex.k === 3);
 
   /* sparse selection over a real ranked decision */
-  const ranked = routeDeterministic("reconcile GSTR-2B against the purchase register and check ITC eligibility and vendor GSTIN filing status", 6);
+  const ranked = routeDeterministic("reconcile the vendor ledger against the purchase register and check ITC eligibility and vendor GSTIN filing status", 6);
   ok("the ranked decision carries candidates to prune", ranked.selected.length > 1);
 
-  const { decision, report } = selectCrew(ranked, "reconcile GSTR-2B against the purchase register and check ITC eligibility and vendor GSTIN filing status");
+  const { decision, report } = selectCrew(ranked, "reconcile the vendor ledger against the purchase register and check ITC eligibility and vendor GSTIN filing status");
   ok("crew never exceeds the tier budget", decision.selected.length <= report.k);
   ok("top-ranked expert always admitted", decision.selected[0].id === [...ranked.selected].sort((a, b) => b.score - a.score)[0].id);
   ok("every admitted expert beyond the first added marginal coverage (new category or new capabilities)", (() => {

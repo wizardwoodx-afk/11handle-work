@@ -49,8 +49,8 @@ import { existsSync, readFileSync } from "node:fs";
 const CLEAN = {
   name: "rsi.routing-playbook.v3",
   target: "routing",
-  currentText: "routing playbook v2: prefer the finance bench for GST verbs",
-  body: "tighten the routing playbook: prefer the finance bench for GST verbs, cite the receipt digest on every routing decision",
+  currentText: "routing playbook v2: prefer the build bench for release verbs",
+  body: "tighten the routing playbook: prefer the build bench for release verbs, cite the receipt digest on every routing decision",
   declares: "evidence: routing exam receipts + canary watchlist; signed playbook version v3",
 };
 

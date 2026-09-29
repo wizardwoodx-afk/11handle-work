@@ -29,7 +29,7 @@ const consoleSrc = fs.readFileSync(path.join(ROOT, "src/ui/graph/ForceGraph.tsx"
 const css = fs.readFileSync(path.join(ROOT, "src/ui/vh.css"), "utf8");
 
 function graphA(): { nodes: G3Node[]; edges: G3Edge[] } {
-  const nodes = [makeNode("gst", "GST", 5), makeNode("recon", "reconciliation", 3), makeNode("tds", "TDS", 2), makeNode("itr", "ITR", 1)];
+  const nodes = [makeNode("build", "build", 5), makeNode("recon", "reconciliation", 3), makeNode("tds", "TDS", 2), makeNode("itr", "ITR", 1)];
   const edges = [{ a: "gst", b: "recon", weight: 3 }, { a: "gst", b: "tds", weight: 1 }, { a: "recon", b: "itr", weight: 1 }];
   return { nodes, edges };
 }

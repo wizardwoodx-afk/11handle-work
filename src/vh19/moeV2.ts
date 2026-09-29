@@ -11,7 +11,7 @@
  *      that clear the bar IS the domain footprint; the pool is every
  *      routed specialist in those categories. Pool size is DYNAMIC by
  *      design: "build an app" may pool several hundred across frontend,
- *      backend, database, security, devops, design; "file the GST return"
+ *      backend, database, security, devops, design; "rotate the production secret"
  *      pools a much smaller finance/tax/legal set. The number follows the
  *      task — never the other way round.
  *

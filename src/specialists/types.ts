@@ -1,10 +1,10 @@
 /**
  * The specialist tool contract.
  *
- * Munshi proved one thing and generalised another. What it proved: a domain specialist is
+ * A domain pack proved one thing and generalised another. What it proved: a domain specialist is
  * only worth shipping when a DETERMINISTIC engine sits behind it — arithmetic a model cannot
  * get wrong because a model is not doing it. What it generalised: nothing about that is
- * specific to Indian finance.
+ * specific to one regulated domain.
  *
  * So this is the contract every domain in the pack implements. A tool declares its fields
  * (as data, so the surface renders itself and a probe can drive every tool without a
@@ -43,7 +43,7 @@ export type Domain =
   | "supply"
   | "web3"
   | "health"
-  | "finance-in";
+
 
 export type FieldKind = "text" | "number" | "select" | "toggle" | "textarea";
 

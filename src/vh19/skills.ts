@@ -176,7 +176,7 @@ Checklist: Did the riskiest line get the most attention? Could you defend the ap
      categories in CATEGORY_SKILLS below ── */
 
   skill("finance.reconcile-first", "Reconciliation Proof",
-    "Ties every statement to a register and itemises every difference. Use for GST/TDS/bank/payment reconciliation and any matching work.",
+    "Ties every statement to a register and itemises every difference. Use for ledger/bank/card/payment reconciliation and any matching work.",
     `Procedure:
 1. Name the two (or more) registers being matched and the KEY fields (invoice number, date, party id, amount, period) before touching data.
 2. Match exactly; near-matches are listed, never netted off. An unexplained difference is a finding, not noise.
@@ -186,7 +186,7 @@ Checklist: Did the riskiest line get the most attention? Could you defend the ap
 Quality checklist: does the residual close? Is every open item owned and aged? Could a stranger re-run it from the named extracts?`),
 
   skill("finance.statute-current", "Statute-Dated Compliance",
-    "Cites the exact return, section and period, and flags where rules may have moved. Use for any tax/GST/statutory filing or advice.",
+    "Cites the exact record, clause and period, and flags where rules may have moved. Use for any regulated filing or advice.",
     `Procedure:
 1. Lead with the citation: form/return, section or rule, the period, and the due date (with the late-fee consequence).
 2. Separate what the statute says from what practice does; mark anything that depends on a notification or circular as "verify against the current notification".
