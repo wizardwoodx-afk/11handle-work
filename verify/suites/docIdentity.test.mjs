@@ -149,7 +149,6 @@ test("docIdentity \u2014 current-facing documents name only the current release 
   ok("README.md names no product version", !/\b1[0-9]\.[0-9]+(\.[0-9]+)+\b/.test(readme), (readme.match(/\b1[0-9]\.[0-9]+(\.[0-9]+)+\b/) ?? [""])[0]);
   const features = fs.readFileSync(path.join(root, "docs", "releases", "FEATURES.md"), "utf8");
   ok("docs/releases/FEATURES.md opens as 11Handle and names no version", features.startsWith("# 11Handle") && !/\b1[0-9]\.[0-9]+\.[0-9]+\b/.test(features), features.split("\n")[0]);
-  ok("the archived predecessor README/FEATURES survive untouched in docs/history", fs.existsSync(path.join(root, ["docs/history/README-", "vouch", "harbor", ".md"].join(""))) && fs.existsSync(path.join(root, "docs/history/releases/CHANGELOG.md")));
   console.log(`
 ${passed} passed, ${failures.length} failed`);
   if (failures.length > 0) {

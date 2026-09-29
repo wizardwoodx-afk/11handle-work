@@ -34,7 +34,6 @@ var SHELL_FILES = [
   "src/ui/screens/Work.tsx",
   "src/ui/screens/Receipts.tsx",
   "src/ui/screens/Docs.tsx",
-  "src/ui/screens/Munshi.tsx",
   "src/ui/screens/Specialists.tsx",
   "src/ui/screens/Memory.tsx",
   "src/ui/screens/Settings.tsx",

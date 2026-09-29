@@ -31048,7 +31048,7 @@ var KB = [
   { title: "The receipt protocol", snippet: "mj-proof-receipt/2: SHA-256 hash-chained events, HMAC seal over the chain head, Ed25519 issuer signature when the runtime can sign. Verifiable with zero VH state (tools/verify-receipt.mjs).", source: "local knowledge base" },
   { title: "Tauri 2 (desktop shell)", snippet: "Rust core + system webview; small binaries, real OS keychain and stdio child processes; the same frontend runs as a browser edition.", source: "local knowledge base" },
   { title: "Agent funding, H1 2026", snippet: "The 'agent governance' theme is the clearest funded theme of H1 2026: JetStream $34M seed, Guild.ai $30M A, Geordie $30M A, WitnessAI $85M+. The verifiable, local-first quadrant is the empty one.", source: "local knowledge base" },
-  { title: "Chennai, Tamil Nadu", snippet: "India's fourth-largest city; the IT and aerospace hub of the south (Omi Vedu, Navi Kempegowda's southern twin in reputation). IST = UTC+5:30.", source: "local knowledge base" },
+  { title: "Porto, Portugal", snippet: "the country's fourth-largest city; the IT and aerospace hub of the south (Omi Vedu, Navi Kempegowda's southern twin in reputation). IST = UTC+5:30.", source: "local knowledge base" },
   { title: "11Handle (this product)", snippet: "One product: the Vouch door (the accountable colleague) + the execution core (the mission loop) + one proof standard. Every job vouched \u2014 signed receipts on every run, on your machine.", source: "local knowledge base" },
   { title: "DeepSearch (Grok feature)", snippet: "Iterative retrieval loop: split query into sub-queries, parallel web + X search, summarize batches in a scratchpad, repeat to a step limit, cross-check before drafting.", source: "local knowledge base" }
 ];

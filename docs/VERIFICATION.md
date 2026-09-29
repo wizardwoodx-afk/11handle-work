@@ -49,3 +49,12 @@ Requires Node 22.12 or newer. The gate is green when the summary line reads
 
 The build record for each release — commands run, node version, results —
 is archived in `docs/history/releases/RELEASE-VERIFICATION.md`.
+
+## Mesh scope
+
+The mesh is a **LOCAL collaboration trust fabric**. Nothing in it reaches a
+network you did not open yourself.
+
+**ECDSA provides portable authority across instances.** A peer proves who it is
+without either side holding the other's secret, and a credential minted here
+verifies in a different install.

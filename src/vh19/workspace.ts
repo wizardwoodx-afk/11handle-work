@@ -2,7 +2,7 @@
  * 11WORKSPACE — the office floor.
  *
  * A multi-team ask ("build an app, connect my internal docs, mail me")
- * is not a chat with 1,850 people. Captain (regional manager) opens the
+ * is not a chat with 1,500 people. Captain (regional manager) opens the
  * desks the request actually needs; each Team Lead staffs workers from
  * that desk; HR holds the bench. The workers who walk onto the floor
  * are capped at CREW_MAX (25) by Agentic MoE — that is 25MoE60:

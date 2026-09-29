@@ -1,7 +1,7 @@
 /**
  * probe/fedFleet.test.ts — the fleet claim, made falsifiable.
  *
- * "2,490 specialists" is marketing until someone can say which are wired and
+ * "2,140 specialists" is marketing until someone can say which are wired and
  * which are catalogued. This suite pins the arithmetic, the drift gate on each
  * generated snapshot, disjointness across all THREE registered benches, and the
  * two facts that keep the number honest: the registered benches are NOT routed,
@@ -48,7 +48,7 @@ import {
 
 declare const HANDLE_ROOT: string | undefined;
 const PROBE_ROOT = typeof HANDLE_ROOT === "string" && HANDLE_ROOT.length > 0 ? HANDLE_ROOT : process.cwd();
-test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 registered", async (t) => {
+test("federation fleet — 2,140 catalogued, stated as 1,500 established + 640 registered", async (t) => {
   await t.test("§1 every snapshot IS its spec, byte for byte", () => {
     const fed = buildFederationBatch();
     assert.equal(JSON.stringify(FEDERATION_BATCH_SPECIALISTS), JSON.stringify(fed),
@@ -66,7 +66,7 @@ test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 r
     assert.equal(REGULATED_REGISTERED_SIZE, REGULATED_BATCH_SPECIALISTS.length);
     assert.equal(REGISTERED_SIZE, REACH_REGISTERED_SIZE + FEDERATION_REGISTERED_SIZE + REGULATED_REGISTERED_SIZE);
     assert.equal(REGISTERED_SIZE, 640);
-    assert.equal(FLEET_SIZE, 2_490);
+    assert.equal(FLEET_SIZE, 2_140);
     assert.equal(FLEET_SIZE, ESTABLISHED_SIZE + REGISTERED_SIZE);
     assert.equal(FLEET_SPECIALISTS.length, FLEET_SIZE);
 
@@ -81,10 +81,10 @@ test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 r
        puts 1,560 first invites "1,560 active specialists", which this product
        does not have. */
     assert.equal(claim.sentence,
-      "1,850 established specialists + 640 registered specialists — 2,490 catalogued, 1,850 routed today");
-    assert.ok(claim.sentence.indexOf("1,850 established") < claim.sentence.indexOf("2,490"),
+      "1,500 established specialists + 640 registered specialists — 2,140 catalogued, 1,500 routed today");
+    assert.ok(claim.sentence.indexOf("1,500 established") < claim.sentence.indexOf("2,140"),
       "the routed number is stated before the total");
-    assert.equal(/\b2,490 (active|specialists are|fielded|routed)\b/.test(claim.sentence), false,
+    assert.equal(/\b2,140 (active|specialists are|fielded|routed)\b/.test(claim.sentence), false,
       "the total is never presented as the active bench");
     assert.equal(claim.sentence.includes(String(FLEET_SIZE - 1)), false, "the sentence must not name a neighbouring count");
   });
@@ -92,7 +92,7 @@ test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 r
 
   await t.test("§2b THE PROVENANCE FILE STATES THE SAME CENSUS THE CODE DOES — drift fails the gate", () => {
     /* The reviewer found `verify/BUILD-INFO.txt` still carrying the 1,560 census while
-       the build ships 2,490 — release-record drift that versionDrift did not catch,
+       the build ships 2,140 — release-record drift that versionDrift did not catch,
        because it pins versions and counts, not the fleet sentence. This is the pin
        that closes it: the file a reader opens to identify the artifact must state the
        same fleet the code does. */
@@ -102,10 +102,10 @@ test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 r
     assert.ok(line, "verify/BUILD-INFO.txt must state the fleet on one `fleet: ` line, so a reader sees it without hunting");
     const stated = line[1];
     const claim = fleetClaim();
-    assert.match(stated, /2,490/, `BUILD-INFO's fleet line does not carry this build's 2,490: ${stated}`);
-    assert.match(stated, /1,850/, "…and not the routed count");
+    assert.match(stated, /2,140/, `BUILD-INFO's fleet line does not carry this build's 2,140: ${stated}`);
+    assert.match(stated, /1,500/, "…and not the routed count");
     assert.match(stated, /640/, "…and not the registered count");
-    assert.ok(stated.includes(String(claim.established)) || stated.includes("1,850"), "BUILD-INFO and fleet.ts must agree on the established count");
+    assert.ok(stated.includes(String(claim.established)) || stated.includes("1,500"), "BUILD-INFO and fleet.ts must agree on the established count");
   });
 
   await t.test("§3 no id collides across the six benches", () => {
@@ -153,7 +153,6 @@ test("federation fleet — 2,490 catalogued, stated as 1,850 established + 640 r
       "vh-19.5.6-reach-batch": 200,
       [FEDERATION_BATCH_PROVENANCE]: 210,
       [REGULATED_BATCH_PROVENANCE]: 230,
-      "vh-19.7.2.1-finance": 350,
       "vh-19.7.2.1-silicon": 350,
     });
   });

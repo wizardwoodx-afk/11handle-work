@@ -53,26 +53,10 @@ ok(
   "the Docs door must reach the knowledge proposal seam and install nothing itself"
 );
 var specSrc = read("src/ui/screens/Specialists.tsx");
-var munshiSrc = read("src/ui/screens/Munshi.tsx");
 ok(
   "the Specialists door renders the generalist pack",
   rendersThroughBoundary("specialists", "Specialists") && /from "\.\.\/\.\.\/specialists"/.test(specSrc) && /toolsForDomain\(domain\)/.test(specSrc) && /DOMAINS\.map/.test(specSrc),
   "the door must render the pack's own tool registry, not a hand-written list"
-);
-ok(
-  "and hosts the finance pack as one domain among the others",
-  /financeTools \? <MunshiTools \/>/.test(specSrc) && /MunshiRoster domain="all"/.test(specSrc) && /from "\.\/Munshi"/.test(specSrc),
-  "the finance pack must be mounted, not duplicated"
-);
-ok(
-  "the finance panel still reaches the Indian-finance engines",
-  /validateGstin/.test(munshiSrc) && /computeTds/.test(munshiSrc) && /reconcile\(/.test(munshiSrc) && /from "\.\.\/\.\.\/munshi"/.test(munshiSrc),
-  "the panel must call the pack's deterministic engines, not restate their answers"
-);
-ok(
-  "and states plainly that computing is not filing",
-  /do not file/i.test(munshiSrc) && /Nothing here touches GSTN/.test(munshiSrc) && /RULESET/.test(munshiSrc),
-  "the panel must say it computes on this machine, names the ruleset, and files nothing"
 );
 ok(
   "the generalist surface states the same boundary for every domain",

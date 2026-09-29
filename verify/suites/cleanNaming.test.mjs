@@ -7,7 +7,14 @@ import * as path from "node:path";
 var root = process.env.HANDLE_ROOT ? path.resolve(process.env.HANDLE_ROOT) : process.cwd();
 var SKIP_DIRS = /* @__PURE__ */ new Set(["node_modules", ".git", "history", "suites", "specs", "fixtures", "dist", "target", "profiles", "screens", "vendor", "fonts"]);
 var SKIP_FILES = /* @__PURE__ */ new Set(["package-lock.json", "Cargo.lock", "BUILD-INFO.txt", "tauri.conf.json"]);
-var SKIP_PATHS = /* @__PURE__ */ new Set([path.join("protocol", "src", "core", "vh-crypto.js")]);
+var SKIP_PATHS = /* @__PURE__ */ new Set([
+  path.join("protocol", "src", "core", "vh-crypto.js"),
+  // The legacy ledger's whole job is to NAME the identifiers that still exist.
+  // Scanning it for those names is the scan failing at its own purpose, so it is
+  // exempt here and policed instead by probe/legacyCompat.test.ts, which checks
+  // that every name in it is allowlisted and still in use.
+  path.join("docs", "LEGACY-COMPAT.md")
+]);
 var BANNED = new RegExp(
   [
     "Vo",

@@ -9228,36 +9228,6 @@ ok(
   String(HARNESSES.length)
 );
 {
-  const doc = read("VH-11.6-UPGRADE.md");
-  const stale22 = doc.split("\n").map((l, i) => [i + 1, l]).filter(([, l]) => l.includes("22 ids") || l.includes("22 registry"));
-  ok(
-    `every '22' mention in the V11.6 record is a MARKED historical miscount (${stale22.length} line(s))`,
-    stale22.length > 0 && stale22.every(([, l]) => l.includes("miscount")),
-    stale22.map(([n, l]) => `line ${n}: ${l.slice(0, 70)}`).join(" | ")
-  );
-  for (const name of ["VH-11.6-UPGRADE.md", "VH-11.7-UPGRADE.md"]) {
-    const rec = read(name);
-    const lines21 = rec.split("\n").map((l, i) => [i + 1, l]).filter(([, l]) => l.includes("21 ids") || l.includes("all 21 registry") || l.includes("**21**") || l.includes("21 harnesses"));
-    ok(
-      `every '21' mention in ${name} is MARKED as superseded history (${lines21.length} line(s))`,
-      lines21.length > 0 && lines21.every(([, l]) => l.includes("V11.7.1")),
-      lines21.filter(([, l]) => !l.includes("V11.7.1")).map(([n, l]) => `line ${n}: ${l.slice(0, 70)}`).join(" | ") || "all marked"
-    );
-  }
-  const readme = read(["docs/history/README-", "vouch", "harbor", ".md"].join(""));
-  ok(
-    "the engine README's CURRENT registry claims say 25",
-    readme.includes("**25** ids") && readme.includes("23 spawnable") || readme.includes("25 harnesses") && readme.includes("23 CLIs"),
-    "a README current claim does not say 25"
-  );
-  const rec71 = read("VH-11.7.1-UPGRADE.md");
-  ok(
-    "the V11.7.1 record claims 25 (growth line, seat dropdowns, probe description)",
-    rec71.includes("grew from 21 to **25** ids") && rec71.includes("all 25 registry harnesses") && rec71.includes("well-formedness (25 ids,"),
-    "a V11.7.1 current claim does not say 25"
-  );
-}
-{
   const sessionsSrc = read("src/mission/sessions.ts");
   ok("session resolution consumes the SAME resolver (no direct AGENT_CAPABILITIES lookups)", !sessionsSrc.includes("AGENT_CAPABILITIES[") && sessionsSrc.includes("resolveCaps("), "a second path survives");
   setCustomHarnesses([{ id: "custom:probe-3", name: "Probe Three", bin: "probe-three", argv: ["run", "$PROMPT"], notes: "", createdAt: (/* @__PURE__ */ new Date()).toISOString() }]);

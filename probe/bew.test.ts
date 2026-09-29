@@ -67,9 +67,9 @@ function main(): void {
   ok("BEW rides a sample across the fleet (seed, middle, last)",
     sampled.every((s) => hasBew(buildSpecialistPrompt(s))));
 
-  const fin = SPECIALISTS.find((s) => s.id.startsWith("finance.in.gstr3b-filer"))!;
+  const fin = SPECIALISTS.find((s) => s.id.startsWith("legal."))!;
   const sic = SPECIALISTS.find((s) => s.id.startsWith("silicon.soc-architect"))!;
-  ok("finance + silicon specialists carry BEW", hasBew(buildSpecialistPrompt(fin)) && hasBew(buildSpecialistPrompt(sic)));
+  ok("legal + silicon specialists carry BEW", hasBew(buildSpecialistPrompt(fin)) && hasBew(buildSpecialistPrompt(sic)));
 
   ok("BEW comes AFTER doctrine and skills in the composed prompt",
     buildSpecialistPrompt(fin).indexOf("Operator doctrine") < buildSpecialistPrompt(fin).indexOf("Behaviour Enforcement Workflow")
@@ -92,7 +92,7 @@ function main(): void {
   ok("an ordered run reports done with a clean trail",
     cleanReceipt.verdict === "done" && cleanReceipt.violations.length === 0 && cleanReceipt.verify === "pass" && cleanReceipt.enforced === true);
 
-  const skip = new BewRun("finance.in.gstr3b-filer");
+  const skip = new BewRun("legal.contract-reviewer");
   skip.to("plan"); skip.to("act");
   const skipReceipt = skip.finish("done"); // never verified
   ok("a run that never verified CANNOT claim done — the machine downgrades to partial and records why",

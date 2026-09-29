@@ -29,7 +29,7 @@ section("1. every tool drives from its own defaults, twice, identically");
 ok("the pack ships a substantial set of tools", sp.TOOLS.length >= 30, `${sp.TOOLS.length} tools`);
 // 19.7.15 [Cartographer]: the pack widens from nine domains to twenty-five — sixteen new
 // ones, each with engines of its own, because a domain with no tool is a label, not a domain.
-ok("across all twenty-six domains", sp.DOMAINS.length === 26, `${sp.DOMAINS.length} domains`);
+ok("across all twenty-five domains", sp.DOMAINS.length === 25, `${sp.DOMAINS.length} domains`);
 const TOOL_DOMAINS = [...new Set(sp.TOOLS.map((t) => t.domain))];
 ok("every domain has tools of its own",
   TOOL_DOMAINS.length >= 25,

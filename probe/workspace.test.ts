@@ -48,8 +48,8 @@ async function main(): Promise<void> {
     DESKS.every((d) => leadFor(d.id)?.role === "lead" && hrFor(d.id)?.role === "hr"));
   ok("Lead/HR ids never collide with the routed catalog",
     DOMAIN_SPECIALISTS.every((s) => getSpecialist(s.id) === null));
-  ok("the routed catalog is still the established 1,850",
-    ESTABLISHED_SPECIALISTS.length === 1850 && listSpecialists().length === 1850);
+  ok("the routed catalog is still the established 1,500",
+    ESTABLISHED_SPECIALISTS.length === 1500 && listSpecialists().length === 1500);
 
   const stats = orgStats();
   ok("every established worker maps to at least one desk", stats.unassigned === 0, `unassigned=${stats.unassigned}`);

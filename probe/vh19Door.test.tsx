@@ -73,7 +73,7 @@ ok("no plaintext provider key path survives anywhere in src/ui", !fs.readdirSync
 
 section("3. the fleet is real and SELF-PROVING (engine-level; the bench does not face the user by name)");
 const stats = catalogStats();
-ok("the fleet count is SELF-PROVING: catalogStats().byProvenance sums to the count (460 seed + 160 broader + 140 reach + 390 matured + 350 finance + 350 silicon = 1,850)", stats.count === 1850 && ["seed","broader","reach","matured","finance","silicon"].map((k) => (stats.byProvenance as Record<string, number>)[k] ?? 0).reduce((a, b) => a + b, 0) === stats.count && (stats.byProvenance as Record<string, number>).financeIn + (stats.byProvenance as Record<string, number>).financeIntl === (stats.byProvenance as Record<string, number>).finance, JSON.stringify(stats.byProvenance));
+ok("the fleet count is SELF-PROVING: catalogStats().byProvenance sums to the count (460 seed + 160 broader + 140 reach + 390 matured + 350 silicon = 1,500)", stats.count === 1500 && ["seed","broader","reach","matured","silicon"].map((k) => (stats.byProvenance as Record<string, number>)[k] ?? 0).reduce((a, b) => a + b, 0) === stats.count, JSON.stringify(stats.byProvenance));
 ok("the bench widened by 150 broader specialists (610 total)", stats.count >= 610, `count ${stats.count}`);
 ok("Work names agents AGENT nn — never by specialist name", /AGENT \$\{String\(i \+ 1\)\.padStart\(2, "0"\)\}/.test(read("src/ui/screens/Work.tsx")));
 

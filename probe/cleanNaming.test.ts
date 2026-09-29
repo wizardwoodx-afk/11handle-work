@@ -24,7 +24,14 @@ const root = process.env.HANDLE_ROOT ? path.resolve(process.env.HANDLE_ROOT as s
 
 const SKIP_DIRS = new Set(["node_modules", ".git", "history", "suites", "specs", "fixtures", "dist", "target", "profiles", "screens", "vendor", "fonts"]);
 const SKIP_FILES = new Set(["package-lock.json", "Cargo.lock", "BUILD-INFO.txt", "tauri.conf.json"]);
-const SKIP_PATHS = new Set([path.join("protocol", "src", "core", "vh-crypto.js")]);
+const SKIP_PATHS = new Set([
+  path.join("protocol", "src", "core", "vh-crypto.js"),
+  // The legacy ledger's whole job is to NAME the identifiers that still exist.
+  // Scanning it for those names is the scan failing at its own purpose, so it is
+  // exempt here and policed instead by probe/legacyCompat.test.ts, which checks
+  // that every name in it is allowlisted and still in use.
+  path.join("docs", "LEGACY-COMPAT.md"),
+]);
 
 /* retired predecessor spellings + outside-product names, assembled so the
  * literal spellings do not appear even here. */

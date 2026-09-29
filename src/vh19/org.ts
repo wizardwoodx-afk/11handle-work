@@ -3,12 +3,12 @@
  *
  *   USER  →  Captain (regional manager; the only human-facing agent)
  *         →  Domain specialists (Team Lead + HR per desk)
- *         →  Sub-agents (the established 1,850 workers)
+ *         →  Sub-agents (the established 1,500 workers)
  *
  * The Specialists door and the engine fleet stay two catalogs. This module
  * is the wiring: every worker belongs to a desk, every desk has a Lead
  * (plans the work) and an HR (staffs the bench). Captain never talks to
- * 1,850 people. Captain talks to the desks the request actually needs;
+ * 1,500 people. Captain talks to the desks the request actually needs;
  * the desks field workers. The floor cap lives in workspace.ts (MoE-25).
  *
  * 30 desks × 2 specialists = 60. That is the "60" in 25MoE60.

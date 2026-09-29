@@ -10,8 +10,8 @@
  *                 →  allow historical references only (named patterns)
  *                 →  anything else that is not PRODUCT_VERSION  →  FAIL
  *
- * Scope: every Markdown file at the repo root and under docs/ — except docs/history/
- * (the historical ledger by design) and CHANGELOG.md (the historical changelog).
+ * Scope: every Markdown file at the repo root and under docs/ — except CHANGELOG.md
+ * (the historical changelog).
  * Matches both "16.9.5" and "v16.9.5" forms, and bare minor forms ("16.9").
  */
 import { test } from "node:test";
@@ -158,7 +158,6 @@ test("docIdentity — current-facing documents name only the current release (ou
   ok("README.md names no product version", !/\b1[0-9]\.[0-9]+(\.[0-9]+)+\b/.test(readme), (readme.match(/\b1[0-9]\.[0-9]+(\.[0-9]+)+\b/) ?? [""])[0]);
   const features = fs.readFileSync(path.join(root, "docs", "releases", "FEATURES.md"), "utf8");
   ok("docs/releases/FEATURES.md opens as 11Handle and names no version", features.startsWith("# 11Handle") && !/\b1[0-9]\.[0-9]+\.[0-9]+\b/.test(features), features.split("\n")[0]);
-  ok("the archived predecessor README/FEATURES survive untouched in docs/history", fs.existsSync(path.join(root, ["docs/history/README-", "vouch", "harbor", ".md"].join(""))) && fs.existsSync(path.join(root, "docs/history/releases/CHANGELOG.md")));
 
   console.log(`\n${passed} passed, ${failures.length} failed`);
   if (failures.length > 0) {

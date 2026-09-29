@@ -6,7 +6,7 @@
  * with the sign-off contract), lifecycle coverage spot-checks (architect →
  * RTL → DV → synthesis → DFT → PD → signoff → tapeout → fab/ATE →
  * packaging → bring-up → reliability → yield → FAE), and catalog
- * registration (1,850 established, 16 categories).
+ * registration (1,500 established, 15 categories).
  */
 import assert from "node:assert/strict";
 
@@ -81,7 +81,7 @@ function main(): void {
 
   /* catalog integration */
   const stats = catalogStats();
-  ok("catalog census: 1,850 established, 16 categories", stats.count === 1850 && stats.categories === 16);
+  ok("catalog census: 1,500 established, 15 categories", stats.count === 1500 && stats.categories === 15);
   ok("provenance carries the silicon batch (350)", stats.byProvenance.silicon === 350);
   ok("silicon specialists registered in SPECIALISTS", SPECIALISTS.some((s) => s.id === "silicon.tapeout-manager") && SPECIALISTS.some((s) => s.id === "silicon.bringup-lead"));
 
